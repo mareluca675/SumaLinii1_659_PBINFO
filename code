@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int long long n, m, mat[1001][1001], s[1001], i, j, min = 1000000001;
+    
+    cin >> n >> m;
+    
+    for(i = 1; i <= n; i++)
+    {
+        for(j = 1; j <= m; j++)
+        {
+            cin >> mat[i][j];
+            
+            s[i] += mat[i][j];
+        }
+    }
+    
+    for(i = 1; i <= n; i++)
+    {
+        for(j = 1; j <= m; j++)
+        {
+            int copie = s[i];
+            
+            s[i] -= mat[i][j];
+            
+            if(s[i] < min)
+            {
+                min = s[i];
+            }
+            
+            s[i] = copie;
+        }
+        
+        cout << min << " ";
+        
+        min = 1000000001;
+    }
+    
+    
+    return 0;
+}
